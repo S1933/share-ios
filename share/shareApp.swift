@@ -12,14 +12,22 @@ import SwiftData
 struct shareApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            SavedLink.self,
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        // IMPORTANT: You must enable "App Groups" in Xcode for both targets and add "group.s1933.share"
+        let modelConfiguration = ModelConfiguration(
+            schema: schema,
+            isStoredInMemoryOnly: false,
+            groupContainer: .identifier("group.s1933.share.data")
+        )
 
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+            // Fallback for when App Groups are not yet enabled/configured in Xcode
+            print("Could not create ModelContainer with App Group: \(error). Falling back to standard.")
+            let fallbackConfig = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+            return try! ModelContainer(for: schema, configurations: [fallbackConfig])
         }
     }()
 

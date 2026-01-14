@@ -1,0 +1,44 @@
+# Xcode
+#
+# gitignore contributors: checkout the Gist {https://gist.github.com/octocat/9257657}
+
+## Build results
+build/
+DerivedData/
+
+## Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+## Swift Package Manager
+.build/
+.swiftpm/
+
+## UserData
+*.xcuserdatad
+*.xcworkspace/xcuserdata/
+
+## OS X
+.DS_Store
+
+## Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+## Bundle (Ruby)
+.bundle/
+vendor/bundle/
